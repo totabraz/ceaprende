@@ -41,6 +41,9 @@ if (isset($this->session->userdata)) {
     <link href="<?php echo base_url('dist/vendors/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="<?php echo base_url('dist/css/style-izanderson.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('dist/css/style-wendell.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('dist/css/style-andressa.css'); ?>">
     <link href="<?php echo base_url('dist/css/style.css'); ?>" rel="stylesheet">
 
     <script src="<?php echo base_url('dist/vendors/jquery/js/jquery.js') ?>"></script>
