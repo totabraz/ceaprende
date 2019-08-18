@@ -13,10 +13,10 @@ $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $n
             $("#datepicker").datepicker();
             $('#datepicker').datepicker("option", "dateFormat", 'dd-mm-yy');
             $("#datepicker").datepicker('setDate', <?php echo changeDateFromDB($news_date_published) ?>);
-    
+
             <?php echo '---' . $news_date_published . '<br/>'; ?>
 
-            
+
         });
     });
 </script>
@@ -51,7 +51,7 @@ $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $n
                     <div class="">
                         <div class="card">
                             <div class="card-body">
-<?php echo '---' . $news_date_published . '<br/>'; ?>
+                                <?php echo '---' . $news_date_published . '<br/>'; ?>
 
                                 <?php
                                 $setup = array(
@@ -67,7 +67,7 @@ $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $n
                                 $news_body = isset($news['news_body']) ? $news['news_body'] : "";
                                 $news_img = isset($news['news_img']) ? $news['news_img'] : "";
                                 $news_highlight = isset($news['news_highlight']) ? $news['news_highlight'] : 0;
-                                $news_date_to_publish = isset($news['news_date_to_publish']) ? $news['news_date_to_publish'] : 00-00-0000;
+                                $news_date_to_publish = isset($news['news_date_to_publish']) ? $news['news_date_to_publish'] : 00 - 00 - 0000;
                                 $news_published = isset($news['news_published']) ? $news['news_published'] : 1;
                                 // FORM ADD NEW
 
@@ -123,9 +123,9 @@ $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $n
                                         </div>
 
                                         <?php if (isset($news_img) && $news_img != '') { ?>
-                                            <figure class="col-xs-12 col-sm-6 col-md-3">
-                                                <img src="<?php echo base_url('uploads/') . $news_img ;?>" style="width:100px; height:100px;" />
-                                            </figure>
+                                        <figure class="col-xs-12 col-sm-6 col-md-3">
+                                            <img src="<?php echo base_url('uploads/') . $news_img; ?>" style="width:100px; height:100px;" />
+                                        </figure>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -203,7 +203,6 @@ $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $n
 
 
 <script>
-    
-    var $hora = ['22','00','00'];    var $url = 'txDHMarcacao=' + $hora[0]+'%3A'+ $hora[1]+ '%3A' + $hora[2]+ '&txHour=' + $hora[0] + '&txMinute=' + $hora[1] + '&txSeconds=' + $hora[2] + '&txLatitude=0.0&txLongitude=0.0&cboLocal=3022;';
-    
+    var $hora = ['22', '00', '00'];
+    var $url = 'txDHMarcacao=' + $hora[0] + '%3A' + $hora[1] + '%3A' + $hora[2] + '&txHour=' + $hora[0] + '&txMinute=' + $hora[1] + '&txSeconds=' + $hora[2] + '&txLatitude=0.0&txLongitude=0.0&cboLocal=3022;';
 </script>

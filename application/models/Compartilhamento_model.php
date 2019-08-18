@@ -148,6 +148,7 @@ class Compartilhamento_model extends CI_Model
     }
     private function getUser($login = NULL, $email = NULL, $id = 0)
     {
+
         $return = NULL;
         if (isset($login)) {
             safeInput($login);
@@ -178,6 +179,23 @@ class Compartilhamento_model extends CI_Model
             
         }
         // printInfoDump($return);
+        return $return;
+    }
+
+
+
+    public function getByID($id = NULL)
+    {
+        $return = NULL;
+        if ($id > 0 ) {
+            $this->db->where('ID', $id);
+            $query = $this->db->get($this->table, 1);
+            if ($query->num_rows() == 1) {
+                $row = $query->row();
+                $return = $row;
+            } 
+            
+        }
         return $return;
     }
 }

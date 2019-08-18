@@ -46,7 +46,7 @@ if ($msg = get_msg()) {
             <div class="box">
                 <div class="box-header ui-sortable-handle" style="cursor: move;">
 
-                    <h3 class="box-title"><?php if (isset($compartilhamento->titulo)) echo $compartilhamento->titulo ?></h3>
+                        <h3 class="box-title"><?php if (isset($compartilhamento->titulo)) echo $compartilhamento->titulo ?></h3>
                     <h5><?php if (isset($compartilhamento->categoria)) echo $compartilhamento->categoria ?></h5>
                 </div>
                 <div class="share-list-screen__card-footer">
