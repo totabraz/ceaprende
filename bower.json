@@ -1,0 +1,92 @@
+{
+    "name": "projeto-base-bootstrap-sass",
+    "version": "0.1.0",
+    "description": "projeto-base-bootstrap-sass",
+    "keywords": [
+        "ufrn",
+        "sinfo"
+    ],
+    "authors": [
+        "contato@deveart.com"
+    ],
+    "license": "MIT",
+    "homepage": "SITE.com.br",
+    "ignore": [
+        "/.*",
+        "**/.*",
+        "vendor",
+        "node_modules",
+        "bower_components",
+        "composer.json",
+        "documentation"
+    ],
+    "dependencies": {
+        "jqcloud2": "latest",
+        "bootstrap-sass": "#~3.x",
+        "lightbox2": "latest",
+        "slick-carousel": "1.7.1",
+        "bootstrap-slider": "*",
+        "chart.js": "1.0.*",
+        "ckeditor": "^4.7.0",
+        "bootstrap-colorpicker": "^2.5.1",
+        "bootstrap": "^3.4.0",
+        "jquery": "^3.2.1",
+        "datatables.net": "^1.10.15",
+        "datatables.net-bs": "^2.1.1",
+        "bootstrap-datepicker": "^1.7.0",
+        "bootstrap-daterangepicker": "^2.1.25",
+        "moment": "^2.18.1",
+        "fastclick": "^1.0.6",
+        "Flot": "flot#^0.8.3",
+        "fullcalendar": "^3.4.0",
+        "inputmask": "jquery.inputmask#^3.3.7",
+        "ion.rangeSlider": "ionrangeslider#^2.2.0",
+        "jvectormap": "^1.2.2",
+        "jquery-knob": "^1.2.13",
+        "morris.js": "^0.5.1",
+        "PACE": "pace#^1.0.2",
+        "select2": "^4.0.3",
+        "jquery-slimscroll": "slimscroll#^1.3.8",
+        "bootstrap-timepicker": "^0.5.2",
+        "jquery-sparkline": "^2.1.3",
+        "font-awesome": "^4.7.0",
+        "Ionicons": "ionicons#^2.0.1",
+        "jquery-ui": "1.11.4"
+    },
+    "resolutions": {
+        "jquery": "^3.2.1"
+    },
+    "install": {
+        "base": "dist/vendors",
+        "path": {
+            "js": "{name}/js",
+            "css": "{name}/css",
+            "otf": "{name}/fonts",
+            "eot": "{name}/fonts",
+            "svg": "{name}/fonts",
+            "ttf": "{name}/fonts",
+            "woff": "{name}/fonts",
+            "woff2": "{name}/fonts",
+            "/(gif)|(png)|(jpg)$/": "{name}/images",
+            "scss": "{name}/sass"
+        },
+        "sources": {
+            "jqcloud2": [
+                "bower_components/jqcloud2/dist/jqcloud.min.js",
+                "bower_components/jqcloud2/dist/jqcloud.min.css"
+            ],
+            "font-awesome": [
+                "bower_components/font-awesome/css/*.min.css",
+                "bower_components/font-awesome/fonts/**"
+            ],
+            "owl.carousel": [
+                "bower_components/owl.carousel/dist/owl.carousel.min.js",
+                "bower_components/owl.carousel/dist/assets/ajax-loader.gif",
+                "bower_components/owl.carousel/dist/assets/owl.video.play.png",
+                "bower_components/owl.carousel/dist/assets/owl.carousel.min.css",
+                "bower_components/owl.carousel/dist/assets/owl.theme.default.min.css"
+            ]
+        }
+    }
+}
+
