@@ -77,5 +77,11 @@ $route['aprender/:num/:num/:num']                   = 'aprender/curtir';
 $route['aprender/buscar']                           = 'aprender/buscar';
 
 
+$route['admin/users']              	                = 'admin/users/list';
+$route['admin/users/listar']              	        = 'admin/users/list';
+$route['admin/users/cadastrar']                      = 'admin/users/create';
+$route['admin/users/blocker/:num']                   = 'admin/users/blocker';
+$route['admin/users/editar/:num']                    = 'admin/users/edit';
+
 
 
