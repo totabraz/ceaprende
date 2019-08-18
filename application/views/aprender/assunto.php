@@ -60,6 +60,24 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                     <p>
                         <?php echo $conteudo ?>
 
+
+                    </p>
+                </div>
+            </div>
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Referências</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body " style="">
+                    <p>
+                        <?php echo $referencia ?>
+
+
                     </p>
                 </div>
             </div>
