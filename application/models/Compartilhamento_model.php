@@ -11,7 +11,7 @@ class Compartilhamento_model extends CI_Model
 
     public function salvar($dados)
     {
-        $dados =  (array)$dados;
+        $dados = (array)$dados;
         if (isset($dados['ID']) && $dados['ID'] > 0) {
             // User já existe. Devo editar
             $this->db->where('ID', $dados['ID']);

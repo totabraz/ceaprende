@@ -158,14 +158,6 @@ class Compartilhar extends CI_Controller
     }
 
 
-
-
-
-
-
-
-
-
     public function editar()
     {
         verificaLogin();
@@ -189,8 +181,6 @@ class Compartilhar extends CI_Controller
             redirect('admin/users/listar', 'refresh');
         }
         $dados['compartilhamento'] = $compartilhamentos;
-        
-
 
         $this->form_validation->set_rules('id_categoria', 'id_categoria', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('titulo', 'titulo', 'trim|required', 'min_length[4');
@@ -211,6 +201,7 @@ class Compartilhar extends CI_Controller
         $this->form_validation->set_rules('resposta32', 'resposta32', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('resposta33', 'resposta33', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('resposta34', 'resposta34', 'trim|required', 'min_length[4');
+        $dados_form['ID'] = $idConteudo;
         $dados_form = $this->input->post();
          
         if ($this->form_validation->run() == false) {
@@ -234,6 +225,7 @@ class Compartilhar extends CI_Controller
 
         $dados = [];
         $dados['categorias'] = $this->categoria->getAll();
+        $dados['data'] = (array)$this->compartilhamento->getByID($idConteudo);
 
         // carrega view
         $this->load->view('includes/head');
