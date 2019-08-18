@@ -54,8 +54,8 @@ class Aprender extends CI_Controller
         // carrega view
         $dados['breadcrumb'][0]['titulo'] = 'Aprender';
         $dados['breadcrumb'][0]['rota'] = 'aprender';
-        $dados['breadcrumb'][1]['titulo'] = 'Listar Assuntos';
-        $dados['breadcrumb'][1]['rota'] = 'listar';
+        $dados['breadcrumb'][1]['titulo'] = $this->categoria->getItById($id_categoria)->titulo;
+        $dados['breadcrumb'][1]['rota'] = $id_categoria;
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);

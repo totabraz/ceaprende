@@ -5,7 +5,13 @@
         if (isset($breadcrumb)) {
 
             for ($i = 0; $i < sizeof($breadcrumb); $i++) {
-                $rota = $breadcrumb[$i]['rota'];
+                $rota = '';
+
+                for ($j = 0; $j < $i + 1; $j++) {
+                    $rota .= $breadcrumb[$j]['rota'].'/';
+
+                }
+
                 $titulo = $breadcrumb[$i]['titulo'];
                 if (strlen($titulo) >= 20) $titulo = substr($titulo, 0, 16) . " ... ";
 
