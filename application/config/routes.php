@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'admin/login';
+$route['default_controller'] = 'admin/home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -59,29 +59,35 @@ $route['setup/instalar']  					        = 'setup/setup/install';
 $route['admin/login']						        = 'admin/login';
 $route['admin/admin']     			    	        = 'admin';
 $route['admin/home']			    	            = 'admin/home';
+$route['admin/home_old']			    	            = 'admin/home_old';
 $route['logout']              				        = 'admin/logout';
 
 $route['home']                                      = 'admin/';
 
-$route['compartilhar']                              = 'compartilhar/';
+# OK
+$route['compartilhar']                              = 'compartilhar/home';
+# OK
 $route['compartilhar/listar']                       = 'compartilhar/listar';
+# OK
+$route['compartilhar/categorias']                   = 'compartilhar/categorias';
+# OK
 $route['compartilhar/cadastrar']                    = 'compartilhar/cadastrar';
-$route['compartilhar/editar']                       = 'compartilhar/editar';
 $route['compartilhar/excluir/:num']                 = 'compartilhar/excluir';
 
-$route['aprender']                                  = 'aprender/';
-$route['aprender/:num/']                            = 'aprender/categorias';
-$route['aprender/:num/:num']                        = 'aprender/assunto';
+$route['aprender']                                  = 'aprender/categorias';
+$route['aprender/listar']                           = 'aprender/categorias';
+$route['aprender/:num']                             = 'aprender/listar';
+$route['aprender/(:num)/(:num)']                    = 'aprender/assunto';
 $route['aprender/:num/:num/:num']                   = 'aprender/responder';
 $route['aprender/:num/:num/:num']                   = 'aprender/curtir';
 $route['aprender/buscar']                           = 'aprender/buscar';
 
 
-$route['admin/users']              	                = 'admin/users/list';
-$route['admin/users/listar']              	        = 'admin/users/list';
-$route['admin/users/cadastrar']                      = 'admin/users/create';
-$route['admin/users/blocker/:num']                   = 'admin/users/blocker';
-$route['admin/users/editar/:num']                    = 'admin/users/edit';
+$route['admin/users']              	                = 'users/list';
+$route['admin/users/listar']              	        = 'users/list';
+$route['admin/users/cadastrar']                     = 'users/create';
+$route['admin/users/blocker/:num']                  = 'users/blocker';
+$route['admin/users/editar/:num']                   = 'users/edit';
 
 
 

@@ -3,7 +3,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <?php
-printInfoDump($news);
 $news_date_published = changeDateFromDB(isset($news['news_date_published']) ? $news['news_date_published'] : date('d-m-Y'));
 
 ?>

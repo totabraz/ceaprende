@@ -12,7 +12,6 @@ class User_model extends CI_Model
     public function salvar($dados)
     {
         $dados =  (array)$dados;
-        echo "chegou?";
         if (isset($dados['ID']) && $dados['ID'] > 0) {
             // User já existe. Devo editar
             $this->db->where('ID', $dados['ID']);
@@ -21,7 +20,6 @@ class User_model extends CI_Model
             return $this->db->affected_rows();
         } else {
             // User não existe. Devo salvar
-            
             $this->db->insert($this->table, $dados);
             return $this->db->insert_id();
         }
@@ -94,6 +92,24 @@ class User_model extends CI_Model
         }
     }
 
+    public function getMyID()
+    {
+
+        $ci = &get_instance();
+        $ci->load->library('session');
+        if (isset($this->session->userdata['login'])) $login = $this->session->userdata['login'];
+        if (isset($login)) {
+            $this->db->where('login', $login);
+            $query = $this->db->get($this->table, 1);
+            if ($query->num_rows() == 1) {
+                $row = $query->row();
+                return $row->ID;
+            } else {
+                return NULL;
+            }
+        }
+    }
+
     public function getUserByLoginOrEmail($login = NULL)
     {
         return $this->getUser($login, $login);
@@ -114,7 +130,6 @@ class User_model extends CI_Model
     {
 
         echo "chegou!!! getUser";
-        printInfoDump($login);
         $return = NULL;
         if (isset($login)) {
             safeInput($login);
@@ -144,7 +159,6 @@ class User_model extends CI_Model
             } 
             
         }
-        printInfoDump($return);
         // printInfoDump($return);
         return $return;
     }
