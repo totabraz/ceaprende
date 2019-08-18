@@ -34,7 +34,7 @@ if ($msg = get_msg()) {
 	</div><!-- /.modal -->
 	<section class="content-header">
 		<h1>
-			Conteúdo
+			Assuntos compartilhados
 			<!-- <small>Preview</small> -->
 		</h1>
 		<a class="btn btn-success" href="<?php echo base_url() . 'compartilhar/cadastrar' ?>"><i class="fa fa-plus"></i></a>
