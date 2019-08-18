@@ -47,4 +47,13 @@
     <h1>
         O que deseja fazer hoje?
     </h1>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <a href="">Compartilhar</a>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <a href="">Aprender</a>
+        </div>
+    </div>
 </section>
