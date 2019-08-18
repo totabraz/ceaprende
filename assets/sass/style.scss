@@ -1,5 +1,6 @@
 @import "./compartilhar.scss";
-
+@import "./style-wendell.scss";
+@import "./style-andressa.scss";
 .skin-blue .sidebar-menu>li:hover>a,
 .skin-blue .sidebar-menu>li.active>a,
 .skin-blue .sidebar-menu>li.menu-open>a {
@@ -28,6 +29,7 @@ table>tbody>tr>td:last-of-type {
 
 .content-wrapper {
 	position: relative;
+    margin-bottom: 50px;
 }
 
 @keyframes rotate {
@@ -83,8 +85,6 @@ table>tbody>tr>td:last-of-type {
 	}
 }
 
-
-
 .table .btn {
 	padding: 2px 10px;
 	min-width: 100px;
@@ -113,4 +113,30 @@ table>tbody>tr>td:last-of-type {
 
 #home{
     
+}
+
+.dataTables_wrapper.form-inline.dt-bootstrap>.row:first-of-type{
+    display: flex;
+    justify-content: flex-start;
+    .col-sm-6:last-of-type{
+        width: 100%;
+    }
+}
+
+.main-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    top: 100%;
+    margin-bottom: 20px;
+
+}
+.progress-description, .info-box-text{
+    &.-wrap{
+        white-space:normal;
+        font-size: 1.6em;
+    }
+}
+.small-box p{
+    font-size: 1.3em;
 }

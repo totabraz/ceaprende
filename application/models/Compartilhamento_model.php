@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model
+class Compartilhamento_model extends CI_Model
 {
-    var $table = 'users';
+    var $table = 'conteudo_compartilhado';
     function __construct()
     {
         parent::__construct();
@@ -25,6 +25,27 @@ class User_model extends CI_Model
         }
     }
 
+
+    public function getAllByIdCategoria( $id_categoria = 0, $sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
+    {
+        if ($id_categoria) $this->db->where('id_categoria', $id_categoria);
+
+        $this->db->order_by($sort, $order);
+        if ($limit)
+            $this->db->limit($limit, $offset);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            $result = $query->result();
+            for ($i = 0; $i < sizeof($result); $i++) {
+                $result[$i]->password = '';
+            }
+            return $result;
+        } else {
+            return NULL;
+        }
+    }
+
+
     public function getAll($sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
     {
         $this->db->order_by($sort, $order);
@@ -41,6 +62,41 @@ class User_model extends CI_Model
             return NULL;
         }
     }
+
+
+    public function countAllByIdCategoria($id_categoria = 0)
+    {
+        if ($id_categoria) $this->db->where('id_categoria', $id_categoria);
+        return  $this->db->count_all($this->table);
+    }
+
+    public function countMine($id_usuario = 0, $titulo = NULL )
+    {
+        if ($titulo) $this->db->like('titulo', $titulo);
+        if ($id_usuario) $this->db->where('id_usuario', $id_usuario);
+        return $this->db->count_all($this->table);
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+    /**
+     * =================================
+     *        REMOVE SE NÃO USAR
+     * =================================
+     */
+
+
+
+
 
 
     public function countAllFiltred($titulo = NULL, $autor = NULL, $orientador = NULL, $data_defesa = NULL, $tipo_doc = NULL, $idioma = NULL, $offset = NULL, $limit = NULL)
@@ -66,49 +122,13 @@ class User_model extends CI_Model
     }
 
 
-    public function excluirUser($id = 0)
+    public function remove($id = 0)
     {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
 
-
-    public function getMyUserInfo()
-    {
-
-        $ci = &get_instance();
-        $ci->load->library('session');
-        if (isset($this->session->userdata['login'])) $login = $this->session->userdata['login'];
-        if (isset($login)) {
-            $this->db->where('login', $login);
-            $query = $this->db->get($this->table, 1);
-            if ($query->num_rows() == 1) {
-                $row = $query->row();
-                return $row;
-            } else {
-                return NULL;
-            }
-        }
-    }
-
-    public function getMyID()
-    {
-
-        $ci = &get_instance();
-        $ci->load->library('session');
-        if (isset($this->session->userdata['login'])) $login = $this->session->userdata['login'];
-        if (isset($login)) {
-            $this->db->where('login', $login);
-            $query = $this->db->get($this->table, 1);
-            if ($query->num_rows() == 1) {
-                $row = $query->row();
-                return $row->ID;
-            } else {
-                return NULL;
-            }
-        }
-    }
 
     public function getUserByLoginOrEmail($login = NULL)
     {
@@ -128,8 +148,6 @@ class User_model extends CI_Model
     }
     private function getUser($login = NULL, $email = NULL, $id = 0)
     {
-
-        echo "chegou!!! getUser";
         $return = NULL;
         if (isset($login)) {
             safeInput($login);
@@ -162,12 +180,4 @@ class User_model extends CI_Model
         // printInfoDump($return);
         return $return;
     }
-
-
-
-    /**
-     * =================================
-     *        REMOVE SE NÃO USAR
-     * =================================
-     */
 }

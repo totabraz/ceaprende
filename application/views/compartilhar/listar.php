@@ -2,8 +2,8 @@
   $(document).ready(() => {
     // const btn = document.querySelector('#btn-removee');
     // btn.addEventListener('click', () => console.log('aehow'))
-    $('#btn-remove').click(() => {
-      console.log('aeho')
+    $('.btn-remove').click(() => {
+      console.log($(this).data('id'))
       $('#modal-remove-share').modal('show');
     })
 
@@ -29,18 +29,21 @@
     </h1>
   </section>
   <div class="row">
+    <?php $index = true ?>
+    <?php foreach ($compartilhamentos as $compartilhamento) { ?>
+    <?php if ($index) { ?>
     <div class="col-xs-12 col-md-4">
       <div class="box">
         <div class="box-header ui-sortable-handle" style="cursor: move;">
 
-          <h3 class="box-title">Titulo massa aqui</h3>
-          <h5>Uma categoria legal</h5>
+          <h3 class="box-title"><?php if (isset($compartilhamento->titulo)) echo $compartilhamento->titulo ?></h3>
+          <h5><?php if (isset($compartilhamento->categoria)) echo $compartilhamento->categoria ?></h5>
         </div>
         <div class="share-list-screen__card-footer">
           <div class="share-list-screen__stats">
             <div class="group">
               <i class="fa fa-thumbs-up"></i>
-              <p>12</p>
+              <p><?php if (isset($compartilhamento->curtidas)) echo $compartilhamento->curtidas ?></p>
             </div>
             <div class="group">
               <i class="fa fa-user"></i>
@@ -48,12 +51,23 @@
             </div>
           </div>
           <div class="share-list-screen__actions">
-            <button id="btn-remove" type="button" class="btn btn-danger">
+            <button id="aaa" data-id="<?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?>" type="button" class="btn btn-danger btn-remove">
               <i class="fa fa-trash"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
+    <?php
+        if ($msg = get_msg()) {
+          echo $msg;
+        }
+        if (isset($compartilhamentos) && sizeof($compartilhamentos) > 0) { } ?>
+
+    <?php } else { ?>
+    <p>Sem informações cadastradas</p>
+    <?php
+      }
+    } ?>
   </div>
 </div>

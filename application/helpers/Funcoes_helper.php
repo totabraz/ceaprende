@@ -22,8 +22,8 @@ if (!function_exists('getMsgOk')) {
     function getMsgOk($msg = NULL)
     {
         if (isset($msg)) {
-            $startOfAlert = '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-            $endOfAlert = '</div>';
+            $startOfAlert = '<div class="row"><div class="col-xs-12"><div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+            $endOfAlert = '</div></div></div>';
             // Erros recebidos pelo envio. -> com os um estilo pré definido estilos
             $return = $startOfAlert . $msg . $endOfAlert;
             return $return;
@@ -36,8 +36,9 @@ if (!function_exists('getMsgError')) {
     function getMsgError($msg = NULL)
     {
         if (isset($msg)) {
-            $startOfAlert = '<div class="alert alert-error alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-            $endOfAlert = '</div>';
+                        
+            $startOfAlert = '<div class="row"><div class="col-xs-12"><div class="alert alert-error alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+            $endOfAlert = '</div></div></div>';
             // Erros recebidos pelo envio. -> com os um estilo pré definido estilos
             $return = $startOfAlert . $msg . $endOfAlert;
             return $return;
