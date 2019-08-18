@@ -42,7 +42,6 @@ class Categoria_model extends CI_Model
         }
     }
 
-
     public function countAll($titulo = NULL,  $ID = NULL)
     {
 

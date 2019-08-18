@@ -1,26 +1,44 @@
-<div class="container">
+<section class="content">
     <div class="row">
-        <div class="col-md-6">
-            <div class="card-aprender">
-                <div class="container-titulo">
-                    <h4><b>Lorem ipsum</b></h4> 
-                </div>
-                <img src="img_avatar.png" alt="Avatar" style="width:100%">
-                <div class="container">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus alias aspernatur labore laudantium commodi! Debitis, consequuntur necessitatibus, impedit dignissimos natus harum iusto aliquam dolorem assumenda ducimus voluptatem, quisquam similique dolore.</p>
+        <!-- ./col -->
+        <h1 class="col-xs-12 text-center">
+            Qual categoria quero estudar hoje? :)
+            <br />
+            <br />
+        </h1>
+
+
+        <?php
+        if (isset($categorias) && sizeof($categorias) > 0) {
+
+            foreach ($categorias as $categoria) {
+                $teste = 0;
+                $cores = ['bg-green', 'bg-yellow', 'bg-red', 'bg-purple', 'bg-blue'];
+                $teste = rand(0, 4);
+                $teste = $cores[$teste];
+                ?>
+        <a href="<?php echo base_url('aprender/' . $categoria->ID) ?>" class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon <?php echo $teste; ?>"><i class="fa fa-graduation-cap"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text -wrap"><?php echo $categoria->titulo ?></span>
+                    <?php
+                            if (isset($categoria->curtidas)) {
+                                echo '<span class="info-box-number">';
+                                echo $categoria->curtidas . ' pessoas curtiram isso';
+                                echo '</span>';
+                            }
+                            ?>
+
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card-aprender">
-                <div class="container-titulo">
-                    <h4><b>Lorem ipsum</b></h4> 
-                </div>
-                <img src="img_avatar.png" alt="Avatar" style="width:100%">
-                <div class="container">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus alias aspernatur labore laudantium commodi! Debitis, consequuntur necessitatibus, impedit dignissimos natus harum iusto aliquam dolorem assumenda ducimus voluptatem, quisquam similique dolore.</p>
-                </div>
-            </div>
-        </div>
+        </a>
+        <?php
+            }
+        }
+
+        ?>
+
     </div>
-</div>
+</section>

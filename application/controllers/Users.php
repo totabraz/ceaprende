@@ -153,7 +153,6 @@ class Users extends CI_Controller
 
         $dados['users'] = $this->user->getAll();
         $user = $this->user->getMyUserInfo();
-        printInfoDump($user);
         $dados['userID'] = $user->ID;
         // printInfoDump($user);
         $dados['menuActive'] = 'users/list';

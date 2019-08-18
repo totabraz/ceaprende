@@ -1,5 +1,5 @@
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+    <div class="">
 
         <header class="main-header">
             <!-- Header Navbar: style can be found in header.less -->

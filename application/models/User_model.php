@@ -130,7 +130,6 @@ class User_model extends CI_Model
     {
 
         echo "chegou!!! getUser";
-        printInfoDump($login);
         $return = NULL;
         if (isset($login)) {
             safeInput($login);
@@ -160,7 +159,6 @@ class User_model extends CI_Model
             } 
             
         }
-        printInfoDump($return);
         // printInfoDump($return);
         return $return;
     }

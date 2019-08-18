@@ -14,29 +14,56 @@ class Aprender extends CI_Controller
         // $this->load->model('Database_model', 'Database');
         $this->load->helper('url');
         $this->load->model('option_model', 'option');
-        // $this->load->model('documento_model', 'documentos');
+        $this->load->model('categoria_model', 'categoria');
+        $this->load->model('compartilhamento_model', 'compartilhamento');
     }
 
     public function index()
     {
-        redirect('aprender/listar', 'refresh');
+        redirect('aprender/categorias', 'refresh');
     }
 
 
-    public function home()
-    {    
-        redirect('aprender/listar', 'refresh');
-    }
+    // public function home()
+    // {    
+    //     $dados['categorias'] = $this->categoria->getAll();
+    //     // carrega view
+    //     $this->load->view('includes/head');
+    //     $this->load->view('includes/header', $dados);
+    //     $this->load->view('aprender/home', $dados);
+    //     $this->load->view('includes/footer');
+    // }
+    
 
+    public function categorias()
+    {
+        $dados['categorias'] = $this->categoria->getAll();
+        verificaLogin();
+        
+        if (isset($dados['categorias']) && sizeof($dados['categorias']) > 0) {
+            for ($i=0; $i < sizeof( $dados['categorias']); $i++) { 
+                $dados['categorias'][$i]->num_assuntos = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
+            } 
+        }
+
+        // carrega view
+        $this->load->view('includes/head');
+        $this->load->view('includes/header', $dados);
+        $this->load->view('aprender/home', $dados);
+        $this->load->view('includes/footer');
+    }
+    
     public function listar()
     {
-        $dados = '';
+        $dados['compartilhamentos'] = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
         $this->load->view('aprender/listar', $dados);
         $this->load->view('includes/footer');
     }
+
+    
     public function cadastrar() { 
         $dados = '';
         // carrega view
@@ -61,6 +88,30 @@ class Aprender extends CI_Controller
         $this->load->view('aprender/excluir', $dados);
         $this->load->view('includes/footer');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

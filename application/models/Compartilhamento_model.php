@@ -25,6 +25,25 @@ class Compartilhamento_model extends CI_Model
         }
     }
 
+
+    public function getAllByIdCategoria($sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
+    {
+        $this->db->order_by($sort, $order);
+        if ($limit)
+            $this->db->limit($limit, $offset);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            $result = $query->result();
+            for ($i = 0; $i < sizeof($result); $i++) {
+                $result[$i]->password = '';
+            }
+            return $result;
+        } else {
+            return NULL;
+        }
+    }
+
+
     public function getAll($sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
     {
         $this->db->order_by($sort, $order);
@@ -43,12 +62,20 @@ class Compartilhamento_model extends CI_Model
     }
 
 
+    public function countAllByIdCategoria($id_categoria = NULL)
+    {
+        if ($id_categoria) $this->db->where('id_categoria', $id_categoria);
+        return  $this->db->count_all($this->table);
+    }
 
+    public function countMine($id_usuario = 0, $titulo = NULL )
+    {
+        if ($titulo) $this->db->like('titulo', $titulo);
+        if ($id_usuario) $this->db->where('id_usuario', $id_usuario);
+        return $this->db->count_all($this->table);
+    }
 
-
-
-
-
+    
 
 
 
@@ -64,6 +91,7 @@ class Compartilhamento_model extends CI_Model
      *        REMOVE SE NÃO USAR
      * =================================
      */
+
 
 
 
@@ -92,7 +120,7 @@ class Compartilhamento_model extends CI_Model
     }
 
 
-    public function excluir($id = 0)
+    public function remove($id = 0)
     {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
@@ -120,7 +148,6 @@ class Compartilhamento_model extends CI_Model
     {
 
         echo "chegou!!! getUser";
-        printInfoDump($login);
         $return = NULL;
         if (isset($login)) {
             safeInput($login);
@@ -150,7 +177,6 @@ class Compartilhamento_model extends CI_Model
             } 
             
         }
-        printInfoDump($return);
         // printInfoDump($return);
         return $return;
     }

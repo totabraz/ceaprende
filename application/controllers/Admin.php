@@ -11,6 +11,7 @@ class Admin extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('option_model', 'option');
         $this->load->model('user_model', 'user');
+        $this->load->model('compartilhamento_model', 'compartilhamento');
     }
 
     public function index()
@@ -19,6 +20,25 @@ class Admin extends CI_Controller
     }
 
     public function home()
+    {
+    verificaLogin();
+    
+        
+        $dados['num_minhas_aulas'] = $this->compartilhamento->countMine($this->user->getMyID());
+        $dados['num_aulas'] = $this->compartilhamento->countAll();
+        $dados['title']    =  'Listagem de Documentos';
+        $dados['subtitle'] =  'Listagem do notícias';
+        $dados['tela']     =  'listar';
+        $dados['sidenav']  = 'list-doc';
+
+        // carrega view
+        $this->load->view('includes/head');
+        $this->load->view('includes/header', $dados);
+        $this->load->view('admin/home', $dados);
+        $this->load->view('includes/footer');
+    }
+
+    public function home_old()
     {
         // Verificar login da sessão
         verificaLogin();
@@ -30,7 +50,7 @@ class Admin extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('admin/home', $dados);
+        $this->load->view('admin/home_old', $dados);
         $this->load->view('includes/footer');
     }
 
@@ -64,7 +84,7 @@ class Admin extends CI_Controller
                             $this->session->set_userdata('permission_name', $user->permission_name);
                             $this->session->set_userdata('permission_value', $user->permission_value);
                             $this->session->set_userdata('email', $user->email);
-                            $this->session->set_userdata('name', $user->first_name);
+                            $this->session->set_userdata('name', $user->full_name);
                             //TODO: fazer difect para
                             redirect('admin/home', 'refresh');
                         } else {
@@ -83,5 +103,4 @@ class Admin extends CI_Controller
             $this->load->view('includes/scripts');
         }
     }
-
 }
