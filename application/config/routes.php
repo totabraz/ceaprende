@@ -72,7 +72,7 @@ $route['compartilhar/listar']                       = 'compartilhar/listar';
 $route['compartilhar/categorias']                   = 'compartilhar/categorias';
 # OK
 $route['compartilhar/cadastrar']                    = 'compartilhar/cadastrar';
-$route['compartilhar/editar/:num']                 = 'compartilhar/editar';
+$route['compartilhar/editar/:num']                 = 'compartilhar/editar/$1';
 $route['compartilhar/excluir/:num']                 = 'compartilhar/excluir';
 
 $route['aprender']                                  = 'aprender/categorias';

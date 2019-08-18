@@ -12,15 +12,15 @@
 	});
 </script>
 
-<?php
-if ($msg = get_msg()) {
-
-	echo '<div class="col-xs-12">';
-	echo $msg;
-	echo '</div>';
-}
-?>
 <div class="container share-list-screen">
+	<?php
+	if ($msg = get_msg()) {
+
+		echo '<div class="col-xs-12 msg">';
+		echo $msg;
+		echo '</div>';
+	}
+	?>
 	<div id="modal-remove-share" class="modal fade" tabindex="-1" role="dialog" data-backdrop="false">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -62,7 +62,10 @@ if ($msg = get_msg()) {
 						</div>
 					</div>
 					<div class="share-list-screen__actions">
-						<button id="aaa" data-id="<?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?>" type="button" class="btn btn-danger btn-remove">
+						<a href="<?php base_url() ?>editar/<?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?>" data-id="<?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?>" type="button" class="btn btn-warning btn-edit">
+							<i class="fa fa-pencil"></i>
+						</a>
+						<button data-id="<?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?>" type="button" class="btn btn-danger btn-remove">
 							<i class="fa fa-trash"></i>
 						</button>
 					</div>

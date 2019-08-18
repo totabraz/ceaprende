@@ -23,30 +23,25 @@
 						}
 						echo form_open();
 
-						$id_categoria = isset($dados['id_categoria']) ? $dados['id_categoria'] : '';
-						$titulo = isset($dados['titulo']) ? $dados['titulo'] : '';
-						$conteudo = isset($dados['conteudo']) ? $dados['conteudo'] : '';
-						$referencia = isset($dados['referencia']) ? $dados['referencia'] : '';
-						$pergunta1 = isset($dados['pergunta1']) ? $dados['pergunta1'] : '';
-						$resposta11 = isset($dados['resposta11']) ? $dados['resposta11'] : '';
-						$resposta12 = isset($dados['resposta12']) ? $dados['resposta12'] : '';
-						$resposta13 = isset($dados['resposta13']) ? $dados['resposta13'] : '';
-						$resposta14 = isset($dados['resposta14']) ? $dados['resposta14'] : '';
-						$pergunta2 = isset($dados['pergunta2']) ? $dados['pergunta2'] : '';
-						$resposta21 = isset($dados['resposta21']) ? $dados['resposta21'] : '';
-						$resposta22 = isset($dados['resposta22']) ? $dados['resposta22'] : '';
-						$resposta23 = isset($dados['resposta23']) ? $dados['resposta23'] : '';
-						$resposta24 = isset($dados['resposta24']) ? $dados['resposta24'] : '';
-						$pergunta3 = isset($dados['pergunta3']) ? $dados['pergunta3'] : '';
-						$resposta31 = isset($dados['resposta31']) ? $dados['resposta31'] : '';
-						$resposta32 = isset($dados['resposta32']) ? $dados['resposta32'] : '';
-						$resposta33 = isset($dados['resposta33']) ? $dados['resposta33'] : '';
-						$resposta34 = isset($dados['resposta34']) ? $dados['resposta34'] : '';
-
-
-
-
-
+						$id_categoria = isset($data['id_categoria']) ? $data['id_categoria'] : '';
+						$titulo = isset($data['titulo']) ? $data['titulo'] : '';
+						$conteudo = isset($data['conteudo']) ? $data['conteudo'] : '';
+						$referencia = isset($data['referencia']) ? $data['referencia'] : '';
+						$pergunta1 = isset($data['pergunta1']) ? $data['pergunta1'] : '';
+						$resposta11 = isset($data['resposta11']) ? $data['resposta11'] : '';
+						$resposta12 = isset($data['resposta12']) ? $data['resposta12'] : '';
+						$resposta13 = isset($data['resposta13']) ? $data['resposta13'] : '';
+						$resposta14 = isset($data['resposta14']) ? $data['resposta14'] : '';
+						$pergunta2 = isset($data['pergunta2']) ? $data['pergunta2'] : '';
+						$resposta21 = isset($data['resposta21']) ? $data['resposta21'] : '';
+						$resposta22 = isset($data['resposta22']) ? $data['resposta22'] : '';
+						$resposta23 = isset($data['resposta23']) ? $data['resposta23'] : '';
+						$resposta24 = isset($data['resposta24']) ? $data['resposta24'] : '';
+						$pergunta3 = isset($data['pergunta3']) ? $data['pergunta3'] : '';
+						$resposta31 = isset($data['resposta31']) ? $data['resposta31'] : '';
+						$resposta32 = isset($data['resposta32']) ? $data['resposta32'] : '';
+						$resposta33 = isset($data['resposta33']) ? $data['resposta33'] : '';
+						$resposta34 = isset($data['resposta34']) ? $data['resposta34'] : '';
 
 						echo '<div class="form-group">';
 						echo '<div class="row">';
@@ -63,9 +58,6 @@
 						echo '</div>';
 						echo '</div>';
 						echo '</div>';
-
-
-
 
 						echo ' <div class="form-group">';
 						$opts = array('name' => 'titulo', 'value' => $titulo, 'title' => 'Assunto');

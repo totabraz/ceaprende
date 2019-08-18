@@ -35,6 +35,10 @@
     h1 { flex: 1 }
   }
 
+  .msg {
+    margin-top: 1rem;
+  }
+
   &__card-footer {
     display: flex;
     align-items: center;
@@ -63,7 +67,7 @@
   }
 
   &__actions {
-    .btn-danger {
+    .btn {
       padding: 0.1rem 0.5rem;
     }
   }
