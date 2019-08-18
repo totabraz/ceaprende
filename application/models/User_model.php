@@ -129,7 +129,6 @@ class User_model extends CI_Model
     private function getUser($login = NULL, $email = NULL, $id = 0)
     {
 
-        echo "chegou!!! getUser";
         $return = NULL;
         if (isset($login)) {
             safeInput($login);

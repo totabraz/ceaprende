@@ -16,6 +16,7 @@ class Aprender extends CI_Controller
         $this->load->model('option_model', 'option');
         $this->load->model('categoria_model', 'categoria');
         $this->load->model('compartilhamento_model', 'compartilhamento');
+        $this->load->model('user_model', 'user');
     }
 
     public function index()
@@ -51,6 +52,11 @@ class Aprender extends CI_Controller
         $id_categoria = $this->uri->segment(2);
         $dados['id_categoria']  = $id_categoria;
         $dados['compartilhamentos'] = $this->compartilhamento->getAllByIdCategoria($id_categoria);
+        if (isset($dados['compartilhamentos'])){
+            for ($i=0; $i < sizeof($dados['compartilhamentos']); $i++) { 
+                $dados['compartilhamentos'][$i]->nome_autor = $this->user->getUserById($dados['compartilhamentos'][$i]->id_usuario)->full_name;
+            }
+        }
         // carrega view
         $dados['breadcrumb'][0]['titulo'] = 'Aprender';
         $dados['breadcrumb'][0]['rota'] = 'aprender';
