@@ -19,7 +19,7 @@ class Aprender extends CI_Controller
 
     public function index()
     {
-        redirect('compartilhar/listar', 'refresh');
+        redirect('aprender/listar', 'refresh');
     }
 
 
@@ -29,7 +29,7 @@ class Aprender extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/home', $dados);
+        $this->load->view('aprender/home', $dados);
         $this->load->view('includes/footer');}
 
     public function listar()
@@ -38,7 +38,7 @@ class Aprender extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/listar', $dados);
+        $this->load->view('aprender/listar', $dados);
         $this->load->view('includes/footer');
     }
     public function cadastrar() { 
@@ -46,7 +46,7 @@ class Aprender extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/cadastrar', $dados);
+        $this->load->view('aprender/cadastrar', $dados);
         $this->load->view('includes/footer');
     }
     public function editar() { 
@@ -54,7 +54,7 @@ class Aprender extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/editar', $dados);
+        $this->load->view('aprender/editar', $dados);
         $this->load->view('includes/footer');
     }
     public function excluir() { 
@@ -62,7 +62,7 @@ class Aprender extends CI_Controller
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/excluir', $dados);
+        $this->load->view('aprender/excluir', $dados);
         $this->load->view('includes/footer');
     }
 

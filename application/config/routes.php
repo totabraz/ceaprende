@@ -69,7 +69,8 @@ $route['compartilhar/cadastrar']                    = 'compartilhar/cadastrar';
 $route['compartilhar/editar']                       = 'compartilhar/editar';
 $route['compartilhar/excluir/:num']                 = 'compartilhar/excluir';
 
-$route['aprender']                                  = 'aprender/';
+$route['aprender']                                  = 'aprender/listar';
+$route['aprender/listar']                                  = 'aprender/listar';
 $route['aprender/:num/']                            = 'aprender/categorias';
 $route['aprender/:num/:num']                        = 'aprender/assunto';
 $route['aprender/:num/:num/:num']                   = 'aprender/responder';
