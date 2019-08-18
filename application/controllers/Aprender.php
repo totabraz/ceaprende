@@ -16,6 +16,7 @@ class Aprender extends CI_Controller
         $this->load->model('option_model', 'option');
         $this->load->model('categoria_model', 'categoria');
         $this->load->model('compartilhamento_model', 'compartilhamento');
+        $this->load->model('user_model', 'user');
     }
 
     public function index()
@@ -34,10 +35,12 @@ class Aprender extends CI_Controller
                 $dados['categorias'][$i]->num_assuntos = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
             }
         }
-
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/home', $dados);
         $this->load->view('includes/footer');
     }
@@ -49,9 +52,20 @@ class Aprender extends CI_Controller
         $id_categoria = $this->uri->segment(2);
         $dados['id_categoria']  = $id_categoria;
         $dados['compartilhamentos'] = $this->compartilhamento->getAllByIdCategoria($id_categoria);
+        if (isset($dados['compartilhamentos'])){
+            for ($i=0; $i < sizeof($dados['compartilhamentos']); $i++) { 
+                $dados['compartilhamentos'][$i]->nome_autor = $this->user->getUserById($dados['compartilhamentos'][$i]->id_usuario)->full_name;
+            }
+        }
+        // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
+        $dados['breadcrumb'][1]['titulo'] = $this->categoria->getItById($id_categoria)->titulo;
+        $dados['breadcrumb'][1]['rota'] = $id_categoria;
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/listar', $dados);
         $this->load->view('includes/footer');
     }
@@ -73,9 +87,18 @@ class Aprender extends CI_Controller
         $id_categoria = $this->uri->segment(2);
         $id_assunto = $this->uri->segment(3);
         $dados['assunto'] = $this->compartilhamento->getUserById($id_assunto);
+        $categoria = $this->categoria->getItById($id_categoria);
+        // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
+        $dados['breadcrumb'][1]['titulo'] = $categoria->titulo;
+        $dados['breadcrumb'][1]['rota'] = $categoria->ID;
+        $dados['breadcrumb'][2]['titulo'] = $dados['assunto']->titulo;
+        $dados['breadcrumb'][2]['rota'] = 'assunto';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/assunto', $dados);
         $this->load->view('includes/footer');
     }

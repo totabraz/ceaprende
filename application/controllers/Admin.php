@@ -21,16 +21,13 @@ class Admin extends CI_Controller
 
     public function home()
     {
-    verificaLogin();
-    
-        
+        verificaLogin();
         $dados['num_minhas_aulas'] = $this->compartilhamento->countMine($this->user->getMyID());
         $dados['num_aulas'] = $this->compartilhamento->countAll();
         $dados['title']    =  'Listagem de Documentos';
         $dados['subtitle'] =  'Listagem do notícias';
         $dados['tela']     =  'listar';
         $dados['sidenav']  = 'list-doc';
-
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);

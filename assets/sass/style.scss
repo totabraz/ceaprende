@@ -1,6 +1,7 @@
 @import "./compartilhar.scss";
 @import "./style-wendell.scss";
 @import "./style-andressa.scss";
+
 .skin-blue .sidebar-menu>li:hover>a,
 .skin-blue .sidebar-menu>li.active>a,
 .skin-blue .sidebar-menu>li.menu-open>a {
@@ -29,7 +30,7 @@ table>tbody>tr>td:last-of-type {
 
 .content-wrapper {
 	position: relative;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 @keyframes rotate {
@@ -101,50 +102,76 @@ table>tbody>tr>td:last-of-type {
 	align-items: center;
 
 	&.-mf-left {
-        *+*{ margin-right: 5px;}
+		*+* {
+			margin-right: 5px;
+		}
+
 		justify-content: flex-start;
 	}
 
 	&.-mf-right {
-        *+*{ margin-left: 5px;}
+		*+* {
+			margin-left: 5px;
+		}
+
 		justify-content: flex-end;
 	}
 }
 
-#home{
-    
+#home {}
+
+.dataTables_wrapper.form-inline.dt-bootstrap>.row:first-of-type {
+	display: flex;
+	justify-content: flex-start;
+
+	.col-sm-6:last-of-type {
+		width: 100%;
+	}
 }
 
-.dataTables_wrapper.form-inline.dt-bootstrap>.row:first-of-type{
-    display: flex;
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	top: 100%;
+	margin-bottom: 20px;
+
+}
+
+.progress-description,
+.info-box-text {
+	&.-wrap {
+		white-space: normal;
+		font-size: 1.6em;
+	}
+}
+
+.small-box p {
+	font-size: 1.3em;
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+}
+
+
+#myBreadcrumb {
+	margin-top: 0;
+	margin-bottom: 0;
+	list-style: none;
+	display: flex;
     justify-content: flex-start;
-    .col-sm-6:last-of-type{
-        width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    li + li:before{
+        content: "\f105";
+        width: 20px;
+        display: inline-block;
+        font-family: 'FontAwesome';
+        text-align: center;
     }
-}
-
-.main-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    top: 100%;
-    margin-bottom: 20px;
-
-}
-.progress-description, .info-box-text{
-    &.-wrap{
-        white-space:normal;
-        font-size: 1.6em;
-    }
-}
-.small-box p{
-    font-size: 1.3em;
-}
-
-.icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    bottom: 0;
 }
