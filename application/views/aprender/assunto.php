@@ -24,7 +24,7 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
     <div class="row">
         <div class="col-xs-12 col-sm-4">
             <!-- small box -->
-            <div class="small-box bg-green">
+            <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>
                         <?php
@@ -47,7 +47,7 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
             echo "<br /><br />" ?>
         </h1>
         <div class="col-xs-12 col-sm-6">
-            <div class="box box-danger">
+            <div class="box box-warning">
                 <div class="box-header with-border">
                     <h3 class="box-title">Entenda</h3>
 
@@ -83,7 +83,25 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
-            <div class="box box-danger">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Referências</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body " style="">
+                    <p>
+                        <?php echo $conteudo ?>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="box box-warning">
                 <div class="box-header with-border">
                     <h3 class="box-title">Teste se aprendeu..</h3>
 
@@ -170,15 +188,43 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                     echo '</div>';
                     echo '</div>';
 
-                    echo form_submit('enviar', 'Salvar', array('class' => 'btn btn-success pull-right'));
+                    echo form_submit('enviar', 'Salvar', array('class' => 'btn btn-warning pull-right'));
 
                     echo form_close();
 
                     ?>
-
                 </div>
             </div>
         </div>
+        <section class="content">
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="title">
+            <h2></h2>   
+        </div> 
+        <a href="#" class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-thumbs-o-up"></i></span>
+
+                <div class="info-box-content">
+                    <h4>gostou do curso? =D</h4>
+
+                    <span class="info-box-text -wrap">Curtir</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- /.row -->
+</section>
     </div>
 
 </section>
