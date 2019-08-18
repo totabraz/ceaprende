@@ -34,10 +34,12 @@ class Aprender extends CI_Controller
                 $dados['categorias'][$i]->num_assuntos = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
             }
         }
-
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/home', $dados);
         $this->load->view('includes/footer');
     }
@@ -50,8 +52,14 @@ class Aprender extends CI_Controller
         $dados['id_categoria']  = $id_categoria;
         $dados['compartilhamentos'] = $this->compartilhamento->getAllByIdCategoria($id_categoria);
         // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
+        $dados['breadcrumb'][1]['titulo'] = 'Listar Assuntos';
+        $dados['breadcrumb'][1]['rota'] = 'listar';
+        // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/listar', $dados);
         $this->load->view('includes/footer');
     }
@@ -73,9 +81,18 @@ class Aprender extends CI_Controller
         $id_categoria = $this->uri->segment(2);
         $id_assunto = $this->uri->segment(3);
         $dados['assunto'] = $this->compartilhamento->getUserById($id_assunto);
+        $categoria = $this->categoria->getItById($id_categoria);
+        // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Aprender';
+        $dados['breadcrumb'][0]['rota'] = 'aprender';
+        $dados['breadcrumb'][1]['titulo'] = $categoria->titulo;
+        $dados['breadcrumb'][1]['rota'] = $categoria->ID;
+        $dados['breadcrumb'][2]['titulo'] = $dados['assunto']->titulo;
+        $dados['breadcrumb'][2]['rota'] = 'assunto';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('aprender/assunto', $dados);
         $this->load->view('includes/footer');
     }

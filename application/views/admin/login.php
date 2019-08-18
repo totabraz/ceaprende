@@ -1,11 +1,18 @@
 <body class="hold-transition login-page">
+
+    <div id="overlay">
+        <div id="overlay-content">
+            <img src="./../assets/img/logo.jpg" alt="" srcset="">
+        </div>
+    </div>
+
     <div class="login-box">
         <div class="login-logo">
             <a href="../../index2.html"><b><?php echo SITE_SIGLA ?></b>Sys</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Login</p>
+            <p class="login-box-msg">Acesse o sistema</p>
             <?php
             if ($msg = get_msg()) {
                 echo $msg;
@@ -56,3 +63,27 @@
         </div>
         <!-- /.login-box-body -->
     </div>
+    <script>
+        $.fn.center = function () {
+  this.css("position","absolute");
+  this.css("top", Math.max(0, (
+    ($(window).height() - $(this).outerHeight()) / 2) + 
+     $(window).scrollTop()) + "px"
+  );
+  this.css("left", Math.max(0, (
+    ($(window).width() - $(this).outerWidth()) / 2) + 
+     $(window).scrollLeft()) + "px"
+  );
+  return this;
+}
+
+$(window).on('load', function() {
+    $("#overlay").show();
+    $("#overlay-content").show().center();
+    setTimeout(function(){    
+        $("#overlay").fadeOut();
+     }, 1500);
+})
+
+    </script>
+</body>
