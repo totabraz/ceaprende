@@ -1,0 +1,57 @@
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+	background: #ecf0f5;
+}
+
+//header
+.main-header {
+	.logo {
+		width: auto;
+		.logo {
+			font-size: 16px;
+			b{
+				font-size: 20px;
+				padding-right: 15px;
+				border-right: 1px solid #fff;
+				margin-right: 15px;
+			}
+		}
+
+		@media (max-width: 575px) {
+			.logo-mini {
+				display: block;
+			}
+	
+			.logo {
+				display: none;
+			}
+		}
+	}
+
+	.navbar {
+		margin-left: 0;
+	}
+}
+
+.content-wrapper, .main-footer {
+	margin-left: 0;
+}
+
+@media (max-width: 767px) {
+	.navbar-nav {
+		.user-menu {
+			.user-image {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.navbar-custom-menu {
+		.navbar-nav {
+			li {
+				a {
+					padding: 8px 15px;
+				}
+			}
+		}
+	}
+}
