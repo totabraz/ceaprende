@@ -28,6 +28,13 @@
     font-size: 2rem;
   }
 
+  .content-header {
+    display: flex;
+    align-items: center;
+
+    h1 { flex: 1 }
+  }
+
   &__card-footer {
     display: flex;
     align-items: center;
