@@ -7,7 +7,6 @@
             <br />
         </h1>
 
-
         <?php
         if (isset($compartilhamentos) && sizeof($compartilhamentos) > 0) {
             for ($i = 0; $i < sizeof($compartilhamentos); $i++) {
@@ -18,7 +17,7 @@
                         <a href="<?php echo base_url('aprender/' . $id_categoria .'/' .$compartilhamentos[$i]->ID) ?>">
                             <h3 class="box-title"><?php echo $compartilhamentos[$i]->titulo ?></h3>
                         </a>
-                        <h5>Autor</h5>
+                        <h5><?php echo $compartilhamentos[$i]->nome_autor ?></h5>
                     </div>
                     <div class="share-list-screen__card-footer">
                         <div class="share-list-screen__stats">
@@ -35,17 +34,15 @@
                         </div>
                     </div>
                 </div>
-                        <?php
-                                // if (isset($compartilhamentos[$i]->num_assuntos)) {
-                                //     echo '<span class="info-box-number">';
-                                //     echo $compartilhamentos[$i]->num_assuntos . ' pessoas curtiram isso';
-                                //     echo '</span>';
-                                // }
-                                // ?>
             </div>                    
         <?php
             }
+        } else { ?>
+        <div class="col-xs-6 col-md-4">
+            <p>Sem informações cadastradas</p>
+        </div>
+        <?php
         }
-
         ?>
+    <div>
 </section>
