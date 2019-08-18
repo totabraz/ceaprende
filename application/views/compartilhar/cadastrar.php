@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="share-register-screen container">
   <section class="content-header">
     <h1>
@@ -71,7 +70,6 @@
 
     </div>
   </div>
-=======
 <!-- Content Header (Page header) -->
 <!-- Main content -->
 <section class="content">
@@ -301,5 +299,4 @@
 </section>
 <!-- /.wrapper-content -->
 <!-- fica no header -->
->>>>>>> 4828be6ad3d82a48ebd70bfdebfa509eb980a5f2
 </div>
