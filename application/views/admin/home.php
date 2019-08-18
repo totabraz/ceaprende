@@ -9,7 +9,7 @@
                             echo $num_minhas_aulas;
                         }
                     ?></h3>
-                    <p>Assuntos compartilhados</p>
+                    <p>Assunto(s) compartilhado(s)</p>
                 </div>
                 <div class="icon">
                     <i class="glyphicon glyphicon-blackboard"></i>
@@ -23,7 +23,7 @@
                 <div class="inner">
                     <h3>5</h3>
 
-                    <p>Assuntos aprendidos</p>
+                    <p>Assunto(s) aprendido(s)</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-rocket"></i>
@@ -44,28 +44,28 @@
             </div>
         </div>
         <!-- ./col -->
-        <h1 class="col-xs-12 text-center" >
-            O que deseja fazer hoje?
-        </h1>
     </div>
-</section>
 
+    <h1 class="col-xs-12 text-center title-to-do" >
+        O que deseja fazer hoje?
+    </h1>
 
-
-<section class="content">
     <!-- Info boxes -->
     <div class="row">
 
-        <a href="<?php echo base_url('compartilhar')?>" class="col-lg-4 col-sm-6 col-xs-12">
+        <a href="<?php echo base_url('compartilhar')?>" class="col-xs-12 col-sm-6">
             <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-filing"></i></span>
+                <span class="info-box-icon bg-green"><i class="ion ion-filing"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text -wrap">Compartilhar</span>
                     <?php
                         if (isset($num_aulas)) {
                             echo '<span class="info-box-number">';
-                            echo $num_minhas_aulas . ' tutoriais criados';
+                            if ($num_minhas_aulas > 0)
+                                echo 'Você já criou ' . $num_minhas_aulas . ' assunto(s)';
+                            else
+                                echo 'Crie seu primeiro assunto!';
                             echo '</span>';
                         }
                     ?>
@@ -75,11 +75,11 @@
             <!-- /.info-box -->
         </a>
         <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
+        <div class="clearfix visible-xs-block"></div>
 
-        <a href="<?php echo base_url('aprender')?>" class="col-lg-4 col-sm-6 col-xs-12">
+        <a href="<?php echo base_url('aprender')?>" class="col-xs-12 col-sm-6">
             <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-graduation-cap"></i></span>
+                <span class="info-box-icon bg-yellow"><i class="fa fa-graduation-cap"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text -wrap">Aprender</span>

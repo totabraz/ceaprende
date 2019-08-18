@@ -7,7 +7,7 @@
 	.logo {
         width: auto;
         float: left !important;
-        height: auto;
+		height: auto;
 		.logo {
 			font-size: 16px;
 			b{
@@ -39,6 +39,33 @@
 	margin-left: 0;
 }
 
+h1, .main-footer {
+	color: #444;
+}
+
+.info-box {
+	.info-box-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.info-box-content {
+		padding: 15px 10px;
+
+		.info-box-text {
+			font-weight: bold;
+		}
+
+		.info-box-number {
+			font-weight: normal;
+		}
+	}
+}
+
+.title-to-do {
+	margin-bottom: 30px;
+}
+
 @media (max-width: 767px) {
 	.navbar-nav {
 		.user-menu {
@@ -47,10 +74,8 @@
 			}
 		}
 	}
-}
 
-.small-box {
-    .icon {
-        top: 4px;
-    }
+	.small-box .icon {
+		display: inherit;
+	}
 }
