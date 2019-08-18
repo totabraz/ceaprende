@@ -22,7 +22,7 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
 ?>
 <section class="content">
     <div class="row">
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
@@ -33,15 +33,14 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                     </h3>
                     <p>
                         <?php if ($curtidas === 1) echo "pessoa gostou deste conteúdo";
-                        else echo "pessoas gostaram deste conteúdo"; ?>
+                        else echo "pessoas gostaram este assunto"; ?>
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="glyphicon glyphicon-blackboard"></i>
+                    <i class="fa fa-thumbs-o-up"></i>
                 </div>
             </div>
         </div>
-
         <h1 class="col-xs-12 text-center">
             <?php echo $titulo;
             echo "<br /><br />" ?>
@@ -58,26 +57,7 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                 </div>
                 <div class="box-body " style="">
                     <p>
-                        <?php echo $conteudo ?>
-
-
-                    </p>
-                </div>
-            </div>
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Referências</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body " style="">
-                    <p>
-                        <?php echo $referencia ?>
-
-
+                    <?php echo $referencia ?>
                     </p>
                 </div>
             </div>
@@ -196,38 +176,22 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                 </div>
             </div>
         </div>
-        <section class="content">
+    </div>
     <!-- Info boxes -->
     <div class="row">
-        <div class="title">
-            <h2></h2>   
-        </div> 
         <a href="#" class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="fa fa-thumbs-o-up"></i></span>
-
                 <div class="info-box-content">
-                    <h4>gostou do curso? =D</h4>
-
-                    <span class="info-box-text -wrap">Curtir</span>
-                </div>
-                <!-- /.info-box-content -->
+                    <span class="info-box-text -wrap">Gotou do assunto?</span>
+                    <p>Curtir</p>
+                </div>   
             </div>
-            <!-- /.info-box -->
         </a>
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-
-    <!-- /.row -->
 </section>
-    </div>
 
-</section>
+
 
 
 
