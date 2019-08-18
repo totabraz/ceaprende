@@ -53,7 +53,6 @@ class Setup extends CI_Controller
             else ($user = $this->user->getUserByEmail($dados_form['email']));
 
             if (($user === NULL) && (isset($dados_form['password']) && (isset($dados_form['password2']) && ($dados_form['password'] === $dados_form['password2'])))) {
-                echo "chegou!!! 1111111";
                 $dados_insert["login"] = $dados_form['login'];
                 $dados_insert["email"] = $dados_form['email'];
                 $dados_insert["full_name"] = $dados_form['full_name'];

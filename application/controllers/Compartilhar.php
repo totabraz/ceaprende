@@ -38,16 +38,20 @@ class Compartilhar extends CI_Controller
     {
         verificaLogin();
         $dados['compartilhamentos'] = $this->compartilhamento->getAll();
-
         if (isset($dados['compartilhamentos']) && sizeof($dados['compartilhamentos']) > 0) {
             for ($i = 0; $i < sizeof($dados['compartilhamentos']); $i++) {
                 $dados['compartilhamentos'][$i]->categoria = $this->categoria->getItById($dados['compartilhamentos'][$i]->id_categoria)->titulo;
             }
         }
 
+        $dados['breadcrumb'][0]['titulo'] = 'Compartilhando';
+        $dados['breadcrumb'][0]['rota'] = 'compartilhar';
+        $dados['breadcrumb'][1]['titulo'] = 'Meus Artigos';
+        $dados['breadcrumb'][1]['rota'] = 'listar';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('compartilhar/listar', $dados);
         $this->load->view('includes/footer');
     }
@@ -80,8 +84,14 @@ class Compartilhar extends CI_Controller
         }
         $dados['categorias'] = $this->categoria->getAll();
         // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Compartilhando';
+        $dados['breadcrumb'][0]['rota'] = 'compartilhar';
+        $dados['breadcrumb'][1]['titulo'] = 'Add Categoria';
+        $dados['breadcrumb'][1]['rota'] = 'categoria';
+        // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('compartilhar/categorias', $dados);
         $this->load->view('includes/footer');
     }
@@ -130,8 +140,14 @@ class Compartilhar extends CI_Controller
 
         $dados['categorias'] = $this->categoria->getAll();
         // carrega view
+        $dados['breadcrumb'][0]['titulo'] = 'Compartilhando';
+        $dados['breadcrumb'][0]['rota'] = 'compartilhar';
+        $dados['breadcrumb'][1]['titulo'] = $this->categoria->getItById($dados_form->id_categoria)->titulo;
+        $dados['breadcrumb'][1]['rota'] = $dados_form->id_categoria;
+        // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
+        $this->load->view('includes/breadcrumb', $dados);
         $this->load->view('compartilhar/cadastrar', $dados);
         $this->load->view('includes/footer');
     }
@@ -158,14 +174,6 @@ class Compartilhar extends CI_Controller
     }
 
 
-
-
-
-
-
-
-
-
     public function editar()
     {
         verificaLogin();
@@ -189,8 +197,6 @@ class Compartilhar extends CI_Controller
             redirect('admin/users/listar', 'refresh');
         }
         $dados['compartilhamento'] = $compartilhamentos;
-        
-
 
         $this->form_validation->set_rules('id_categoria', 'id_categoria', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('titulo', 'titulo', 'trim|required', 'min_length[4');
@@ -211,8 +217,9 @@ class Compartilhar extends CI_Controller
         $this->form_validation->set_rules('resposta32', 'resposta32', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('resposta33', 'resposta33', 'trim|required', 'min_length[4');
         $this->form_validation->set_rules('resposta34', 'resposta34', 'trim|required', 'min_length[4');
+        $dados_form['ID'] = $idConteudo;
         $dados_form = $this->input->post();
-         
+
         if ($this->form_validation->run() == false) {
             if (validation_errors()) {
                 set_msg(getMsgError(validation_errors()));
@@ -228,12 +235,13 @@ class Compartilhar extends CI_Controller
                     set_msg(getMsgError('Problemas ao cadastrada !'));
                 }
             } else {
-                set_msg(getMsgError('Categorai já cadastrada!'));
+                set_msg(getMsgError('Categoria já cadastrada!'));
             }
         }
 
         $dados = [];
         $dados['categorias'] = $this->categoria->getAll();
+        $dados['data'] = (array)$this->compartilhamento->getByID($idConteudo);
 
         // carrega view
         $this->load->view('includes/head');
@@ -241,18 +249,6 @@ class Compartilhar extends CI_Controller
         $this->load->view('compartilhar/editar', $dados);
         $this->load->view('includes/footer');
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function buscar()

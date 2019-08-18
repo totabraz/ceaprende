@@ -57,7 +57,7 @@ $resposta34 =  isset($assunto->resposta34) ?  $assunto->resposta34 : '';
                 </div>
                 <div class="box-body " style="">
                     <p>
-                        <?php echo $conteudo ?>
+                    <?php echo $referencia ?>
                     </p>
                 </div>
             </div>
