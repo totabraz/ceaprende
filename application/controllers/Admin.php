@@ -28,10 +28,10 @@ class Admin extends CI_Controller
         $dados['sidenav']  = 'list-doc';
 
         // carrega view
-        $this->load->view('admin/includes/head');
-        $this->load->view('admin/includes/header', $dados);
+        $this->load->view('includes/head');
+        $this->load->view('includes/header', $dados);
         $this->load->view('admin/home', $dados);
-        $this->load->view('admin/includes/footer');
+        $this->load->view('includes/footer');
     }
 
     public function logout()
@@ -78,9 +78,9 @@ class Admin extends CI_Controller
             $dados['title'] = 'Acesso ao sistema';
             $dados['subtitle'] = 'Acessar o painel';
 
-            $this->load->view('admin/includes/head');
+            $this->load->view('includes/head');
             $this->load->view('admin/login', $dados);
-            $this->load->view('admin/includes/scripts');
+            $this->load->view('includes/scripts');
         }
     }
 
