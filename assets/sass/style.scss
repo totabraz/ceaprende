@@ -30,6 +30,7 @@ table>tbody>tr>td:last-of-type {
 
 .content-wrapper {
 	position: relative;
+    margin-bottom: 50px;
 }
 
 @keyframes rotate {
@@ -121,4 +122,13 @@ table>tbody>tr>td:last-of-type {
     .col-sm-6:last-of-type{
         width: 100%;
     }
+}
+
+.main-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    margin-bottom: -50px;
+}
 }
