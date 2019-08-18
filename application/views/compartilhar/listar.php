@@ -34,14 +34,15 @@
                             <?php $index = true ?>
                             <?php foreach ($compartilhamentos as $compartilhamento) { ?>
                             <?php if ($index) { } ?>
-                            <tr class="<?php if (isset($compartilhamento->blocked) && $compartilhamento->blocked) echo 'inative' ?>">
+                            <tr>
                                 <td><?php if (isset($compartilhamento->ID)) echo $compartilhamento->ID ?></td>
                                 <td><?php if (isset($compartilhamento->categoria)) echo $compartilhamento->categoria ?></td>
+                               
                                 <td><?php if (isset($compartilhamento->titulo)) echo $compartilhamento->titulo ?></td>
                                 <td><?php if (isset($compartilhamento->curtidas)) echo $compartilhamento->curtidas ?></td>
 
                                 <td>
-                                    <a href="<?php echo base_url('compartilhar/editar/' . $compartilhamentoId) ?>" class="btn btn-small btn-info" title="Editar">
+                                    <a href="<?php echo base_url('compartilhar/editar/' . $compartilhamento->ID) ?>" class="btn btn-small btn-info" title="Editar">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>

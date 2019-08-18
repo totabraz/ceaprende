@@ -19,7 +19,7 @@
                     if ($msg = get_msg()) {
                         echo $msg;
                     }
-                    echo form_open('compartilhar/salvarCategorias');
+                    echo form_open();
 
                     $titulo = isset($form_input['titulo']) ? $form_input['titulo'] : "";
                     $ID = isset($form_input['ID']) ? $form_input['ID'] : "";
@@ -28,9 +28,10 @@
                     $opts = array('name' => 'titulo', 'value' => $titulo, 'title' => 'Cadastrar nova categoria');
                     echo form_label('Cadastrar nova categoria:');
                     echo form_input($opts, '', $setup);
-                    echo '</div>';
-
+                    echo '</div>';                    
                     echo form_submit('enviar', 'Salvar', array('class' => 'btn btn-success pull-right'));
+
+
                     // Form Closed
                     echo form_close();
                     ?>
@@ -60,7 +61,7 @@
                                 <td><?php if (isset($categoria->titulo)) echo $categoria->titulo ?></td>
                                 <td>
                                     <a href="<?php echo base_url('compartilhar/editar/' . $categoria->ID) ?>" class="btn btn-small btn-info" titulo="Editar">
-                                        Editar
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
                             </tr>

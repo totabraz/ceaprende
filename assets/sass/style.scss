@@ -114,3 +114,11 @@ table>tbody>tr>td:last-of-type {
 #home{
     
 }
+
+.dataTables_wrapper.form-inline.dt-bootstrap>.row:first-of-type{
+    display: flex;
+    justify-content: flex-start;
+    .col-sm-6:last-of-type{
+        width: 100%;
+    }
+}

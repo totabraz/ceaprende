@@ -92,6 +92,24 @@ class User_model extends CI_Model
         }
     }
 
+    public function getMyID()
+    {
+
+        $ci = &get_instance();
+        $ci->load->library('session');
+        if (isset($this->session->userdata['login'])) $login = $this->session->userdata['login'];
+        if (isset($login)) {
+            $this->db->where('login', $login);
+            $query = $this->db->get($this->table, 1);
+            if ($query->num_rows() == 1) {
+                $row = $query->row();
+                return $row->ID;
+            } else {
+                return NULL;
+            }
+        }
+    }
+
     public function getUserByLoginOrEmail($login = NULL)
     {
         return $this->getUser($login, $login);

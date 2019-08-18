@@ -16,7 +16,9 @@ class Compartilhar extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('option_model', 'option');
+        $this->load->model('user_model', 'user');
         $this->load->model('categoria_model', 'categoria');
+        $this->load->model('compartilhamento_model', 'compartilhamento');
     }
 
     public function index()
@@ -26,46 +28,32 @@ class Compartilhar extends CI_Controller
 
 
     public function home()
-    {    
+    {
         redirect('compartilhar/listar', 'refresh');
     }
 
     public function listar()
     {
 
-        $dados['compartilhamento'] = $this->compartilhamento->getAll();
-    
+        $dados['compartilhamentos'] = $this->compartilhamento->getAll();
+        
+        if (isset($dados['compartilhamentos']) && sizeof($dados['compartilhamentos']) > 0) {
+            for ($i=0; $i < sizeof( $dados['compartilhamentos']); $i++) { 
+                $dados['compartilhamentos'][$i]->categoria = $this->categoria->getItById($dados['compartilhamentos'][$i]->id_categoria)->titulo;
+            } 
+        }
+
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
         $this->load->view('compartilhar/listar', $dados);
         $this->load->view('includes/footer');
     }
-    
+
+    // OKKKKKKKKKKKKKK
+    // OKKKKKKKKKKKKKK
+
     public function categorias()
-    {
-
-        $dados['compartilhamento'] = $this->compartilhamento->getAll();
-    
-        // carrega view
-        $this->load->view('includes/head');
-        $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/categorias', $dados);
-        $this->load->view('includes/footer');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    public function salvarCategorias()
     {
         verificaLoginAdmin();
         $this->form_validation->set_rules('titulo', 'Titulo', 'trim|required|min_length[4]');
@@ -80,12 +68,11 @@ class Compartilhar extends CI_Controller
             printInfoDump($dados_form);
             $categoria = $this->categoria->getItByTitulo($dados_form['titulo']);
             if (($categoria === NULL) && (isset($dados_form['titulo']))) {
-                
+
                 // salvar no banco
                 if ($id = $this->categoria->salvar($dados_form)) {
                     set_msg(getMsgOk('Categoria cadastrada!'));
                     redirect('compartilhar/categorias/cadastrar', 'refresh');
-                    
                 } else {
                     set_msg(getMsgError('Problemas ao cadastrada !'));
                 }
@@ -95,7 +82,7 @@ class Compartilhar extends CI_Controller
         }
 
         $dados['categorias'] = $this->categoria->getAll();
-    
+
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
@@ -103,6 +90,8 @@ class Compartilhar extends CI_Controller
         $this->load->view('includes/footer');
     }
 
+    // OKKKKKKKKKKKKKK
+    // OKKKKKKKKKKKKKK
 
 
 
@@ -110,15 +99,113 @@ class Compartilhar extends CI_Controller
 
 
 
-    public function cadastrar() { 
-        $dados = '';
+
+
+
+
+
+
+    public function cadastrar()
+    {
+
+
+
+
+        $this->form_validation->set_rules('id_categoria', 'id_categoria', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('titulo', 'titulo', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('conteudo', 'conteudo', 'trim|required', 'min_length[4');
+        // $this->form_validation->set_rules('referencia', 'referencia', 'trim|required','min_length[4');
+        $this->form_validation->set_rules('pergunta1', 'pergunta1', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta11', 'resposta11', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta12', 'resposta12', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta13', 'resposta13', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta14', 'resposta14', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('pergunta2', 'pergunta2', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta21', 'resposta21', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta22', 'resposta22', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta23', 'resposta23', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta24', 'resposta24', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('pergunta3', 'pergunta3', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta31', 'resposta31', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta32', 'resposta32', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta33', 'resposta33', 'trim|required', 'min_length[4');
+        $this->form_validation->set_rules('resposta34', 'resposta34', 'trim|required', 'min_length[4');
+        $dados_form = $this->input->post();
+
+        if ($this->form_validation->run() == false) {
+            if (validation_errors()) {
+                set_msg(getMsgError(validation_errors()));
+            }
+        } else {
+            unset($dados_form['enviar']);
+            $dados_form['id_usuario'] = $this->user->getMyID();
+            printInfoDump($dados_form);
+
+            if (isset($dados_form['id_categoria']) && (isset($dados_form['id_categoria']) && ($dados_form['id_usuario'] !== NULL))) {
+
+                if ($id = $this->compartilhamento->salvar($dados_form)) {
+                    set_msg(getMsgOk('Assunto cadastrado!'));
+                    redirect('compartilhar', 'refresh');
+                } else {
+                    set_msg(getMsgError('Problemas ao cadastrada !'));
+                }
+            } else {
+                set_msg(getMsgError('Categorai já cadastrada!'));
+            }
+        }
+
+
+
+
+        $dados['categorias'] = $this->categoria->getAll();
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
         $this->load->view('compartilhar/cadastrar', $dados);
         $this->load->view('includes/footer');
     }
-    public function editar() { 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function editar()
+    {
         $dados = '';
         // carrega view
         $this->load->view('includes/head');
@@ -126,7 +213,8 @@ class Compartilhar extends CI_Controller
         $this->load->view('compartilhar/editar', $dados);
         $this->load->view('includes/footer');
     }
-    public function excluir() { 
+    public function excluir()
+    {
         $dados = '';
         // carrega view
         $this->load->view('includes/head');
