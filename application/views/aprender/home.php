@@ -10,26 +10,25 @@
 
         <?php
         if (isset($categorias) && sizeof($categorias) > 0) {
-
-            foreach ($categorias as $categoria) {
-                $teste = 0;
+            for ($i=0; $i < sizeof($categorias) ; $i++) { 
+                                $teste = 0;
                 $cores = ['bg-green', 'bg-yellow', 'bg-red', 'bg-purple', 'bg-blue'];
                 $teste = rand(0, 4);
                 $teste = $cores[$teste];
                 ?>
-        <a href="<?php echo base_url('aprender/' . $categoria->ID) ?>" class="col-md-3 col-sm-6 col-xs-12">
+        <a href="<?php echo base_url('aprender/' . $categorias[$i]->ID) ?>" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon <?php echo $teste; ?>"><i class="fa fa-graduation-cap"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text -wrap"><?php echo $categoria->titulo ?></span>
+                    <span class="info-box-text -wrap"><?php echo $categorias[$i]->titulo ?></span>
                     <?php
-                            if (isset($categoria->curtidas)) {
-                                echo '<span class="info-box-number">';
-                                echo $categoria->curtidas . ' pessoas curtiram isso';
-                                echo '</span>';
-                            }
-                            ?>
+                            // if (isset($categorias[$i]->num_assuntos)) {
+                            //     echo '<span class="info-box-number">';
+                            //     echo $categorias[$i]->num_assuntos . ' micro tutoriais';
+                            //     echo '</span>';
+                            // }
+                            // ?>
 
                 </div>
             </div>

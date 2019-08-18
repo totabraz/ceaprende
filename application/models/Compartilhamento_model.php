@@ -26,8 +26,10 @@ class Compartilhamento_model extends CI_Model
     }
 
 
-    public function getAllByIdCategoria($sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
+    public function getAllByIdCategoria( $id_categoria = 0, $sort = 'ID', $limit = NULL, $offset = NULL, $order = 'asc')
     {
+        if ($id_categoria) $this->db->where('id_categoria', $id_categoria);
+
         $this->db->order_by($sort, $order);
         if ($limit)
             $this->db->limit($limit, $offset);
@@ -62,7 +64,7 @@ class Compartilhamento_model extends CI_Model
     }
 
 
-    public function countAllByIdCategoria($id_categoria = NULL)
+    public function countAllByIdCategoria($id_categoria = 0)
     {
         if ($id_categoria) $this->db->where('id_categoria', $id_categoria);
         return  $this->db->count_all($this->table);
@@ -146,8 +148,6 @@ class Compartilhamento_model extends CI_Model
     }
     private function getUser($login = NULL, $email = NULL, $id = 0)
     {
-
-        echo "chegou!!! getUser";
         $return = NULL;
         if (isset($login)) {
             safeInput($login);

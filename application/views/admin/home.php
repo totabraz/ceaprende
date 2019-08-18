@@ -56,7 +56,7 @@
     <!-- Info boxes -->
     <div class="row">
 
-        <a href="<?php echo base_url('compartilhar')?>" class="col-md-3 col-sm-6 col-xs-12">
+        <a href="<?php echo base_url('compartilhar')?>" class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="ion ion-filing"></i></span>
 
@@ -77,7 +77,7 @@
         <!-- fix for small devices only -->
         <div class="clearfix visible-sm-block"></div>
 
-        <a href="<?php echo base_url('aprender')?>" class="col-md-3 col-sm-6 col-xs-12">
+        <a href="<?php echo base_url('aprender')?>" class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fa fa-graduation-cap"></i></span>
 

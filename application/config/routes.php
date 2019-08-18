@@ -76,8 +76,8 @@ $route['compartilhar/excluir/:num']                 = 'compartilhar/excluir';
 
 $route['aprender']                                  = 'aprender/categorias';
 $route['aprender/listar']                           = 'aprender/categorias';
-$route['aprender/:num']                            = 'aprender/listar';
-$route['aprender/:num/:num']                        = 'aprender/assunto';
+$route['aprender/:num']                             = 'aprender/listar';
+$route['aprender/(:num)/(:num)']                    = 'aprender/assunto';
 $route['aprender/:num/:num/:num']                   = 'aprender/responder';
 $route['aprender/:num/:num/:num']                   = 'aprender/curtir';
 $route['aprender/buscar']                           = 'aprender/buscar';

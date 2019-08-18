@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Aprender extends CI_Controller
 {
-
     function __construct()
     {
         parent::__construct();
@@ -13,6 +12,7 @@ class Aprender extends CI_Controller
         // # Para poder chamar apenas como: 'Database'
         // $this->load->model('Database_model', 'Database');
         $this->load->helper('url');
+        $this->load->helper('form');
         $this->load->model('option_model', 'option');
         $this->load->model('categoria_model', 'categoria');
         $this->load->model('compartilhamento_model', 'compartilhamento');
@@ -24,26 +24,15 @@ class Aprender extends CI_Controller
     }
 
 
-    // public function home()
-    // {    
-    //     $dados['categorias'] = $this->categoria->getAll();
-    //     // carrega view
-    //     $this->load->view('includes/head');
-    //     $this->load->view('includes/header', $dados);
-    //     $this->load->view('aprender/home', $dados);
-    //     $this->load->view('includes/footer');
-    // }
-    
-
     public function categorias()
     {
-        $dados['categorias'] = $this->categoria->getAll();
         verificaLogin();
-        
+        $dados['categorias'] = $this->categoria->getAll();
+
         if (isset($dados['categorias']) && sizeof($dados['categorias']) > 0) {
-            for ($i=0; $i < sizeof( $dados['categorias']); $i++) { 
+            for ($i = 0; $i < sizeof($dados['categorias']); $i++) {
                 $dados['categorias'][$i]->num_assuntos = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
-            } 
+            }
         }
 
         // carrega view
@@ -52,10 +41,14 @@ class Aprender extends CI_Controller
         $this->load->view('aprender/home', $dados);
         $this->load->view('includes/footer');
     }
-    
+
     public function listar()
     {
-        $dados['compartilhamentos'] = $this->compartilhamento->countAllByIdCategoria($dados['categorias'][$i]->ID);
+        verificaLogin();
+        $dados = [];
+        $id_categoria = $this->uri->segment(2);
+        $dados['id_categoria']  = $id_categoria;
+        $dados['compartilhamentos'] = $this->compartilhamento->getAllByIdCategoria($id_categoria);
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
@@ -63,8 +56,9 @@ class Aprender extends CI_Controller
         $this->load->view('includes/footer');
     }
 
-    
-    public function cadastrar() { 
+
+    public function cadastrar()
+    {
         $dados = '';
         // carrega view
         $this->load->view('includes/head');
@@ -72,15 +66,21 @@ class Aprender extends CI_Controller
         $this->load->view('aprender/cadastrar', $dados);
         $this->load->view('includes/footer');
     }
-    public function editar() { 
-        $dados = '';
+
+    public function assunto()
+    {
+        verificaLogin();
+        $id_categoria = $this->uri->segment(2);
+        $id_assunto = $this->uri->segment(3);
+        $dados['assunto'] = $this->compartilhamento->getUserById($id_assunto);
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
-        $this->load->view('aprender/editar', $dados);
+        $this->load->view('aprender/assunto', $dados);
         $this->load->view('includes/footer');
     }
-    public function excluir() { 
+    public function excluir()
+    {
         $dados = '';
         // carrega view
         $this->load->view('includes/head');
