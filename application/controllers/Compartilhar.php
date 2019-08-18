@@ -142,8 +142,8 @@ class Compartilhar extends CI_Controller
         // carrega view
         $dados['breadcrumb'][0]['titulo'] = 'Compartilhando';
         $dados['breadcrumb'][0]['rota'] = 'compartilhar';
-        $dados['breadcrumb'][1]['titulo'] = $this->categoria->getItById($dados_form->id_categoria)->titulo;
-        $dados['breadcrumb'][1]['rota'] = $dados_form->id_categoria;
+        $dados['breadcrumb'][1]['titulo'] = 'Cadastrar';
+        $dados['breadcrumb'][1]['rota'] = 'cadastrar';
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
