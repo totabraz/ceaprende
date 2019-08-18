@@ -14,7 +14,7 @@ class Aprender extends CI_Controller
         // $this->load->model('Database_model', 'Database');
         $this->load->helper('url');
         $this->load->model('option_model', 'option');
-        $this->load->model('documento_model', 'documentos');
+        // $this->load->model('documento_model', 'documentos');
     }
 
     public function index()
@@ -25,12 +25,8 @@ class Aprender extends CI_Controller
 
     public function home()
     {    
-        $dados = '';
-        // carrega view
-        $this->load->view('includes/head');
-        $this->load->view('includes/header', $dados);
-        $this->load->view('aprender/home', $dados);
-        $this->load->view('includes/footer');}
+        redirect('aprender/listar', 'refresh');
+    }
 
     public function listar()
     {

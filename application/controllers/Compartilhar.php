@@ -25,12 +25,8 @@ class Compartilhar extends CI_Controller
 
     public function home()
     {    
-        $dados = '';
-        // carrega view
-        $this->load->view('includes/head');
-        $this->load->view('includes/header', $dados);
-        $this->load->view('compartilhar/home', $dados);
-        $this->load->view('includes/footer');}
+        redirect('compartilhar/listar', 'refresh');
+    }
 
     public function listar()
     {
