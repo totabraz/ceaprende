@@ -63,10 +63,12 @@ $route['logout']              				        = 'admin/logout';
 
 $route['home']                                      = 'admin/';
 
-$route['compartilhar']                              = 'compartilhar/';
+$route['compartilhar']                              = 'compartilhar/home';
 $route['compartilhar/listar']                       = 'compartilhar/listar';
+$route['compartilhar/categorias']                   = 'compartilhar/categorias';
+$route['compartilhar/categorias/cadastrar']         = 'compartilhar/salvarCategorias';
 $route['compartilhar/cadastrar']                    = 'compartilhar/cadastrar';
-$route['compartilhar/editar']                       = 'compartilhar/editar';
+$route['compartilhar/editar/:num']                  = 'compartilhar/editar';
 $route['compartilhar/excluir/:num']                 = 'compartilhar/excluir';
 
 $route['aprender']                                  = 'aprender/listar';

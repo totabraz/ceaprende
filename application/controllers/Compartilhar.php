@@ -13,8 +13,10 @@ class Compartilhar extends CI_Controller
         // # Para poder chamar apenas como: 'Database'
         // $this->load->model('Database_model', 'Database');
         $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $this->load->model('option_model', 'option');
-        $this->load->model('documento_model', 'documentos');
+        $this->load->model('categoria_model', 'categoria');
     }
 
     public function index()
@@ -30,13 +32,84 @@ class Compartilhar extends CI_Controller
 
     public function listar()
     {
-        $dados = '';
+
+        $dados['compartilhamento'] = $this->compartilhamento->getAll();
+    
         // carrega view
         $this->load->view('includes/head');
         $this->load->view('includes/header', $dados);
         $this->load->view('compartilhar/listar', $dados);
         $this->load->view('includes/footer');
     }
+    
+    public function categorias()
+    {
+
+        $dados['compartilhamento'] = $this->compartilhamento->getAll();
+    
+        // carrega view
+        $this->load->view('includes/head');
+        $this->load->view('includes/header', $dados);
+        $this->load->view('compartilhar/categorias', $dados);
+        $this->load->view('includes/footer');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public function salvarCategorias()
+    {
+        verificaLoginAdmin();
+        $this->form_validation->set_rules('titulo', 'Titulo', 'trim|required|min_length[4]');
+        $dados_form = $this->input->post();
+
+        if ($this->form_validation->run() == false) {
+            if (validation_errors()) {
+                set_msg(getMsgError(validation_errors()));
+            }
+        } else {
+            unset($dados_form['enviar']);
+            printInfoDump($dados_form);
+            $categoria = $this->categoria->getItByTitulo($dados_form['titulo']);
+            if (($categoria === NULL) && (isset($dados_form['titulo']))) {
+                
+                // salvar no banco
+                if ($id = $this->categoria->salvar($dados_form)) {
+                    set_msg(getMsgOk('Categoria cadastrada!'));
+                    redirect('compartilhar/categorias/cadastrar', 'refresh');
+                    
+                } else {
+                    set_msg(getMsgError('Problemas ao cadastrada !'));
+                }
+            } else {
+                set_msg(getMsgError('Categorai já cadastrada!'));
+            }
+        }
+
+        $dados['categorias'] = $this->categoria->getAll();
+    
+        // carrega view
+        $this->load->view('includes/head');
+        $this->load->view('includes/header', $dados);
+        $this->load->view('compartilhar/categorias', $dados);
+        $this->load->view('includes/footer');
+    }
+
+
+
+
+
+
+
+
     public function cadastrar() { 
         $dados = '';
         // carrega view

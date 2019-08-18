@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model
+class Compartilhamento_model extends CI_Model
 {
-    var $table = 'users';
+    var $table = 'conteudo_compartilhado';
     function __construct()
     {
         parent::__construct();
@@ -43,6 +43,32 @@ class User_model extends CI_Model
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * =================================
+     *        REMOVE SE NÃO USAR
+     * =================================
+     */
+
+
+
+
+
     public function countAllFiltred($titulo = NULL, $autor = NULL, $orientador = NULL, $data_defesa = NULL, $tipo_doc = NULL, $idioma = NULL, $offset = NULL, $limit = NULL)
     {
         if ($limit) $this->db->limit($limit, $offset);
@@ -66,31 +92,13 @@ class User_model extends CI_Model
     }
 
 
-    public function excluirUser($id = 0)
+    public function excluir($id = 0)
     {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
 
-
-    public function getMyUserInfo()
-    {
-
-        $ci = &get_instance();
-        $ci->load->library('session');
-        if (isset($this->session->userdata['login'])) $login = $this->session->userdata['login'];
-        if (isset($login)) {
-            $this->db->where('login', $login);
-            $query = $this->db->get($this->table, 1);
-            if ($query->num_rows() == 1) {
-                $row = $query->row();
-                return $row;
-            } else {
-                return NULL;
-            }
-        }
-    }
 
     public function getUserByLoginOrEmail($login = NULL)
     {
@@ -146,12 +154,4 @@ class User_model extends CI_Model
         // printInfoDump($return);
         return $return;
     }
-
-
-
-    /**
-     * =================================
-     *        REMOVE SE NÃO USAR
-     * =================================
-     */
 }
