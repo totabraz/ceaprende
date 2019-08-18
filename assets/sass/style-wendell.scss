@@ -27,11 +27,18 @@
         z-index: 1010;
       }
   }
-
-  .table>tbody>tr>td{
-    padding: 2px;
+  .box-aprender{
+    border-top: 3px solid #f39c12 !important;
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   }
-
-  .title{
-    text-align: center;
+  
+  @media only screen and (min-width: 768px) {
+    h1.text-center{
+      text-align:left !important;
+    }
   }
