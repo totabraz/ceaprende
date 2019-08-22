@@ -109,8 +109,8 @@ defined('LABEL_SELLER')                 OR define('LABEL_SELLER', "SELLER");
 defined('PERMISSION_VIEWER')            OR define('PERMISSION_VIEWER', 10000);
 defined('LABEL_VIEWER')                 OR define('LABEL_VIEWER', "VIEWER");
 
-defined('SITE_NAME')                 OR define('SITE_NAME', "Sys");
-defined('SITE_SIGLA')                OR define('SITE_SIGLA', "Sys");
+defined('SITE_SIGLA')                OR define('SITE_SIGLA', "Aprende");
+defined('SITE_NAME')                 OR define('SITE_NAME', "Ce");
 defined('SITE_LINK')                 OR define('SITE_LINK', "http://www.totabraz.com/");
 
 

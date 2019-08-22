@@ -8,7 +8,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b><?php echo SITE_SIGLA ?></b>Sys</a>
+            <a href="../../index2.html"><b>Ce</b><?php echo SITE_SIGLA ?></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
